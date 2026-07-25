@@ -1,10 +1,10 @@
-# Contributing to itsthelore projects
+# Contributing to AsDecided projects
 
 Thanks for your interest. This is the organisation-wide baseline; a repository
 with its own `CONTRIBUTING.md` (for example
-[rac-core](https://github.com/itsthelore/rac-core/blob/main/CONTRIBUTING.md),
-[wayfinder-router](https://github.com/itsthelore/wayfinder-router/blob/main/CONTRIBUTING.md),
-or [proofkeeper](https://github.com/itsthelore/proofkeeper/blob/main/CONTRIBUTING.md))
+[core](https://github.com/asdecided/core/blob/main/CONTRIBUTING.md),
+[wayfinder-router](https://github.com/asdecided/wayfinder-router/blob/main/CONTRIBUTING.md),
+or [proofkeeper](https://github.com/asdecided/proofkeeper/blob/main/CONTRIBUTING.md))
 adds project-specific setup and verification steps on top of it.
 
 ## Ground rules
@@ -40,4 +40,4 @@ adds project-specific setup and verification steps on top of it.
 
 Not sure where a change belongs? The organisation keeps one repository per
 concern — the [org README](profile/README.md) maps them. When in doubt, open
-an issue on [rac-core](https://github.com/itsthelore/rac-core/issues) and ask.
+an issue on [core](https://github.com/asdecided/core/issues) and ask.

@@ -1,10 +1,10 @@
-# Its The Lore
+# AsDecided
 
 > **Give your coding agent the decisions your team already made — so it stops re-doing things you ruled out.**
 
 Agents that know *why*. **Deterministic. Read-only. No RAG, no guessing.**
 
-Lore keeps a team's recorded knowledge — requirements, decisions, designs,
+AsDecided keeps a team's recorded knowledge — requirements, decisions, designs,
 roadmaps, and prompts — as typed Markdown in the repo, validates it in CI, and
 serves it read-only to coding agents over MCP. Retrieval is deterministic and
 reproducible: no embeddings, no model call to decide what's relevant. The engine
@@ -14,12 +14,12 @@ air-gapped; the trust boundary is human PR review, never the agent.
 ## Start here
 
 ```bash
-pip install rac-core   # the rac CLI + the lore MCP server
-rac quickstart         # scaffold identity + your first artifact
-claude mcp add lore -- rac mcp
+brew install asdecided/tap/asdecided-core
+decided quickstart
+claude mcp add lore -- decided-mcp --root /path/to/your/repo
 ```
 
-Full documentation: <https://itsthelore.github.io/rac-core/>
+Full documentation: <https://asdecided.github.io/core/>
 
 ## The repositories
 
@@ -27,19 +27,20 @@ One repo per concern (ADR-092):
 
 | Repository | What it is |
 |---|---|
-| [rac-core](https://github.com/itsthelore/rac-core) | The engine: the `rac` CLI, validation gates, and the read-only `lore` MCP server |
-| [wayfinder-router](https://github.com/itsthelore/wayfinder-router) | Deterministic prompt-complexity routing — a hard-or-easy call on every prompt, offline, no model call |
-| [proofkeeper](https://github.com/itsthelore/proofkeeper) | A bring-your-own-model agent that drives your app and leaves a re-runnable Playwright test as proof for each capability |
-| [rac-connectors](https://github.com/itsthelore/rac-connectors) | Export-contract consumers that feed memory, RAG, and graph backends — recall fuzzily there, verify in Lore |
-| [rac-sdk](https://github.com/itsthelore/rac-sdk) | Non-Python language SDKs — thin clients over the engine's stable `--json` contracts |
-| [rac-editors](https://github.com/itsthelore/rac-editors) | IDE / editor integrations, one subdir per client |
-| [rac-ci](https://github.com/itsthelore/rac-ci) | The CI delivery surface — validation and gating wrappers, GitHub first |
-| [rac-benchmarks](https://github.com/itsthelore/rac-benchmarks) | Evaluation suites, one subdir per benchmark |
+| [core](https://github.com/asdecided/core) | The native engine: the `decided` CLI, validation gates, and read-only MCP server |
+| [spec](https://github.com/asdecided/spec) | Language-neutral schemas and compatibility fixtures |
+| [ci](https://github.com/asdecided/ci) | Validation and gating wrappers, GitHub first |
+| [sdk](https://github.com/asdecided/sdk) | Thin language clients over the engine's stable machine contracts |
+| [connectors](https://github.com/asdecided/connectors) | Ancillary inbound and outbound integrations |
+| [editors](https://github.com/asdecided/editors) | IDE and editor integrations |
+| [benchmarks](https://github.com/asdecided/benchmarks) | Deterministic evaluation suites |
+| [wayfinder-router](https://github.com/asdecided/wayfinder-router) | Deterministic prompt-complexity routing |
+| [proofkeeper](https://github.com/asdecided/proofkeeper) | A bring-your-own-model verification agent |
 
 ## How the pieces fit
 
-- **rac-core** is the system of record: it captures *what* your product should
-  do and *why*, and enforces it at write time (`rac validate`, `rac gate`).
+- **core** is the system of record: it captures *what* your product should
+  do and *why*, and enforces it at write time (`decided validate`, `decided gate`).
 - **Proofkeeper** closes the loop: it reads those capabilities over the
   published export contract, drives your product, and proposes verification
   evidence back by pull request.
@@ -64,4 +65,4 @@ One repo per concern (ADR-092):
 
 Everything here is early and evolving quickly. Contributions, ideas, and
 experiments welcome — start with
-[rac-core](https://github.com/itsthelore/rac-core).
+[core](https://github.com/asdecided/core).
