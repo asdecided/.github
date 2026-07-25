@@ -1,9 +1,9 @@
 # Security Policy
 
 This is the default security policy for all repositories in the
-**itsthelore** organisation. A repository with its own `SECURITY.md`
-(for example [rac-core](https://github.com/itsthelore/rac-core/blob/main/SECURITY.md)
-or [wayfinder-router](https://github.com/itsthelore/wayfinder-router/blob/main/SECURITY.md))
+**AsDecided** organisation. A repository with its own `SECURITY.md`
+(for example [core](https://github.com/asdecided/core/blob/main/SECURITY.md)
+or [wayfinder-router](https://github.com/asdecided/wayfinder-router/blob/main/SECURITY.md))
 adds repo-specific scope and threat-model detail on top of this policy —
 the reporting route below applies everywhere.
 
