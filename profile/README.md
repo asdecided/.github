@@ -1,68 +1,68 @@
 # AsDecided
 
-> **Give your coding agent the decisions your team already made — so it stops re-doing things you ruled out.**
+> **Repository-native decision infrastructure for AI coding agents.**
 
-Agents that know *why*. **Deterministic. Read-only. No RAG, no guessing.**
+AsDecided keeps human-reviewed engineering decisions beside the code as
+validated Markdown, retrieves the current records that apply to a task, and
+connects objective consequences to deterministic checks. Agents receive
+inspectable authority with stable citations instead of a larger prompt or a
+model judgement presented as proof.
 
-AsDecided keeps a team's recorded knowledge — requirements, decisions, designs,
-roadmaps, and prompts — as typed Markdown in the repo, validates it in CI, and
-serves it read-only to coding agents over MCP. Retrieval is deterministic and
-reproducible: no embeddings, no model call to decide what's relevant. The engine
-underneath is **RAC — Requirements as Code**, open source and built to be
-air-gapped; the trust boundary is human PR review, never the agent.
+[Product site](https://asdecided.com/) · [Documentation](https://docs.asdecided.com/start-here/) · [Canonical sources](https://asdecided.com/sources) · [Changelog](https://asdecided.com/changelog)
 
 ## Start here
 
 ```bash
 brew install asdecided/tap/asdecided-core
 decided quickstart
-claude mcp add lore -- decided-mcp --root /path/to/your/repo
+decided validate decisions/
+decided gate decisions/ --code --base origin/main
 ```
 
-Full documentation: <https://asdecided.github.io/core/>
+Then [connect a coding agent](https://docs.asdecided.com/vendor/core/mcp/) to
+the read-only MCP server.
 
-## The repositories
+## Record, retrieve, cite, enforce
 
-One repo per concern (ADR-092):
+- **Record:** preserve context, scope, lifecycle, alternatives and consequences in reviewable decision artifacts.
+- **Retrieve:** resolve current applicable authority deterministically by repository, path or capability.
+- **Cite:** attach stable decision IDs and source paths to plans, pull requests and review evidence.
+- **Enforce:** link mechanically checkable consequences to architecture tests, policy and CI without an LLM judge.
 
-| Repository | What it is |
+Core requires no embeddings, hosted index or model call for retrieval. The
+same repository state produces the same answer.
+
+## Public repositories
+
+| Repository | Responsibility |
 |---|---|
-| [core](https://github.com/asdecided/core) | The native engine: the `decided` CLI, validation gates, and read-only MCP server |
-| [spec](https://github.com/asdecided/spec) | Language-neutral schemas and compatibility fixtures |
-| [ci](https://github.com/asdecided/ci) | Validation and gating wrappers, GitHub first |
-| [sdk](https://github.com/asdecided/sdk) | Thin language clients over the engine's stable machine contracts |
-| [connectors](https://github.com/asdecided/connectors) | Ancillary inbound and outbound integrations |
-| [editors](https://github.com/asdecided/editors) | IDE and editor integrations |
-| [benchmarks](https://github.com/asdecided/benchmarks) | Deterministic evaluation suites |
-| [wayfinder-router](https://github.com/asdecided/wayfinder-router) | Deterministic prompt-complexity routing |
-| [proofkeeper](https://github.com/asdecided/proofkeeper) | A bring-your-own-model verification agent |
+| [core](https://github.com/asdecided/core) | Native `decided` CLI, validation gates and read-only MCP server |
+| [spec](https://github.com/asdecided/spec) | Language-neutral decision-artifact contract and compatibility fixtures |
+| [ci](https://github.com/asdecided/ci) | Decision-aware validation and merge-gate integrations |
+| [sentry](https://github.com/asdecided/sentry) | Deterministic decision enforcement against code changes |
+| [sdk](https://github.com/asdecided/sdk) | Thin language clients over stable engine contracts |
+| [connectors](https://github.com/asdecided/connectors) | Explicit inbound and outbound bridges |
+| [benchmarks](https://github.com/asdecided/benchmarks) | Reproducible evaluation and scale evidence |
+| [proofkeeper](https://github.com/asdecided/proofkeeper) | Requirement-to-test verification companion |
 
-## How the pieces fit
+## Source boundaries
 
-- **core** is the system of record: it captures *what* your product should
-  do and *why*, and enforces it at write time (`decided validate`, `decided gate`).
-- **Proofkeeper** closes the loop: it reads those capabilities over the
-  published export contract, drives your product, and proposes verification
-  evidence back by pull request.
-- **Wayfinder** is a sibling, not a consumer — routing is a runtime concern,
-  not a knowledge one. It began as an experiment inside RAC and was split out.
-- Everything else (connectors, SDKs, editors, CI) is a thin surface over the
-  engine's stable contracts — the engine stays deterministic, offline, and
-  in one place.
+- The [specification](https://docs.asdecided.com/spec/) governs the language-neutral artifact contract.
+- The [documentation](https://docs.asdecided.com/start-here/) governs current commands and supported behaviour.
+- Public repositories expose implementation evidence.
+- The [changelog](https://asdecided.com/changelog) records dated released behaviour.
+- [Notes](https://asdecided.com/notes) and [Articles](https://asdecided.com/articles) explain patterns and trade-offs; they do not override product authority.
+
+The [canonical source map](https://asdecided.com/sources) gives people, search
+engines and answer systems one route from a claim to the source that proves it.
 
 ## Principles
 
-- **Markdown-first.** Every artifact is plain Markdown with a small
-  frontmatter envelope, versioned next to the code.
-- **Deterministic over probabilistic.** Classification, retrieval, routing,
-  and eval scoring make no model calls; the same input gives the same answer.
-- **Read-only at serve time.** Agents cite recorded decisions by ID; they
-  cannot mutate the store. Changes land through human-reviewed PRs.
-- **Enforced in CI.** Malformed artifacts, broken links, and references to
-  superseded decisions are rejected before the knowledge lands.
+- **Markdown beside the code.** Decisions remain portable, diffable and reviewable.
+- **Deterministic retrieval.** Current scope and lifecycle are resolved without a model call.
+- **Read-only serving.** Agents retrieve and cite; accepted authority changes through repository review.
+- **Truthful enforcement.** Mechanical checks prove only the consequences they can inspect.
 
-## Project status
-
-Everything here is early and evolving quickly. Contributions, ideas, and
-experiments welcome — start with
-[core](https://github.com/asdecided/core).
+AsDecided is open source, solo-maintained and supported on a best-effort basis.
+Start with [Core](https://github.com/asdecided/core) or read the
+[five-minute quickstart](https://docs.asdecided.com/vendor/core/quickstart/).
