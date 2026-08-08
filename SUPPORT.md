@@ -2,7 +2,7 @@
 
 Thanks for using AsDecided. Here's where to go for help:
 
-- **Documentation** — <https://asdecided.github.io/core/> covers the
+- **Documentation** — <https://asdecided.com/docs/start-here/> covers the
   quickstart, CLI reference, and MCP server setup. Wayfinder and Proofkeeper
   document themselves in their own READMEs.
 - **Questions and ideas** — open a
