@@ -8,7 +8,7 @@ connects objective consequences to deterministic checks. Agents receive
 inspectable authority with stable citations instead of a larger prompt or a
 model judgement presented as proof.
 
-[Product site](https://asdecided.com/) · [Documentation](https://docs.asdecided.com/start-here/) · [Canonical sources](https://asdecided.com/sources) · [Changelog](https://asdecided.com/changelog)
+[Product site](https://asdecided.com/) · [Documentation](https://asdecided.com/docs/start-here/) · [Canonical sources](https://asdecided.com/sources) · [Changelog](https://asdecided.com/changelog)
 
 ## Start here
 
@@ -19,7 +19,7 @@ decided validate decisions/
 decided gate decisions/ --code --base origin/main
 ```
 
-Then [connect a coding agent](https://docs.asdecided.com/vendor/core/mcp/) to
+Then [connect a coding agent](https://asdecided.com/docs/vendor/core/mcp/) to
 the read-only MCP server.
 
 ## Record, retrieve, cite, enforce
@@ -47,8 +47,8 @@ same repository state produces the same answer.
 
 ## Source boundaries
 
-- The [specification](https://docs.asdecided.com/spec/) governs the language-neutral artifact contract.
-- The [documentation](https://docs.asdecided.com/start-here/) governs current commands and supported behaviour.
+- The [specification](https://asdecided.com/docs/spec/) governs the language-neutral artifact contract.
+- The [documentation](https://asdecided.com/docs/start-here/) governs current commands and supported behaviour.
 - Public repositories expose implementation evidence.
 - The [changelog](https://asdecided.com/changelog) records dated released behaviour.
 - [Notes](https://asdecided.com/notes) and [Articles](https://asdecided.com/articles) explain patterns and trade-offs; they do not override product authority.
@@ -65,4 +65,4 @@ engines and answer systems one route from a claim to the source that proves it.
 
 AsDecided is open source, solo-maintained and supported on a best-effort basis.
 Start with [Core](https://github.com/asdecided/core) or read the
-[five-minute quickstart](https://docs.asdecided.com/vendor/core/quickstart/).
+[five-minute quickstart](https://asdecided.com/docs/vendor/core/quickstart/).
